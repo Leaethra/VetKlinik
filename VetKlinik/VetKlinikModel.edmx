@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbLogiVetKlinikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblHastaSahipleri">
+          <Key>
+            <PropertyRef Name="SahipID" />
+            <PropertyRef Name="HastaID" />
+          </Key>
+          <Property Name="SahipID" Type="int" Nullable="false" />
+          <Property Name="HastaID" Type="int" Nullable="false" />
+          <Property Name="SahiplikTipi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblHayvanlar">
+          <Key>
+            <PropertyRef Name="HastaID" />
+          </Key>
+          <Property Name="HastaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HastaAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tur" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cins" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="date" />
+          <Property Name="SahipID" Type="int" Nullable="false" />
+          <Property Name="CipNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblIslemler">
+          <Key>
+            <PropertyRef Name="IslemID" />
+          </Key>
+          <Property Name="IslemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IslemAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BirimFiyat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StokMiktari" Type="int" />
+        </EntityType>
+        <EntityType Name="TblKullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblMuayeneKayitlari">
+          <Key>
+            <PropertyRef Name="KayitID" />
+          </Key>
+          <Property Name="KayitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HastaID" Type="int" Nullable="false" />
+          <Property Name="IslemTarihi" Type="date" Nullable="false" />
+          <Property Name="IslemID" Type="int" Nullable="false" />
+          <Property Name="TeshisveNotlar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Ucret" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TblSahipler">
+          <Key>
+            <PropertyRef Name="SahipID" />
+          </Key>
+          <Property Name="SahipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Eposta" Type="nvarchar" MaxLength="50" />
+          <Property Name="KayitTarihi" Type="date" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TblHastaSahipleri_TblHayvanlar">
+          <End Role="TblHayvanlar" Type="Self.TblHayvanlar" Multiplicity="1" />
+          <End Role="TblHastaSahipleri" Type="Self.TblHastaSahipleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHayvanlar">
+              <PropertyRef Name="HastaID" />
+            </Principal>
+            <Dependent Role="TblHastaSahipleri">
+              <PropertyRef Name="HastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHastaSahipleri_TblSahipler">
+          <End Role="TblSahipler" Type="Self.TblSahipler" Multiplicity="1" />
+          <End Role="TblHastaSahipleri" Type="Self.TblHastaSahipleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSahipler">
+              <PropertyRef Name="SahipID" />
+            </Principal>
+            <Dependent Role="TblHastaSahipleri">
+              <PropertyRef Name="SahipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHayvanlar_TblSahipler">
+          <End Role="TblSahipler" Type="Self.TblSahipler" Multiplicity="1" />
+          <End Role="TblHayvanlar" Type="Self.TblHayvanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSahipler">
+              <PropertyRef Name="SahipID" />
+            </Principal>
+            <Dependent Role="TblHayvanlar">
+              <PropertyRef Name="SahipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMuayeneKayitlari_TblHayvanlar">
+          <End Role="TblHayvanlar" Type="Self.TblHayvanlar" Multiplicity="1" />
+          <End Role="TblMuayeneKayitlari" Type="Self.TblMuayeneKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHayvanlar">
+              <PropertyRef Name="HastaID" />
+            </Principal>
+            <Dependent Role="TblMuayeneKayitlari">
+              <PropertyRef Name="HastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMuayeneKayitlari_TblIslemler">
+          <End Role="TblIslemler" Type="Self.TblIslemler" Multiplicity="1" />
+          <End Role="TblMuayeneKayitlari" Type="Self.TblMuayeneKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblIslemler">
+              <PropertyRef Name="IslemID" />
+            </Principal>
+            <Dependent Role="TblMuayeneKayitlari">
+              <PropertyRef Name="IslemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbLogiVetKlinikModelStoreContainer">
+          <EntitySet Name="TblHastaSahipleri" EntityType="Self.TblHastaSahipleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblHayvanlar" EntityType="Self.TblHayvanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblIslemler" EntityType="Self.TblIslemler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblKullanicilar" EntityType="Self.TblKullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMuayeneKayitlari" EntityType="Self.TblMuayeneKayitlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblSahipler" EntityType="Self.TblSahipler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblHastaSahipleri_TblHayvanlar" Association="Self.FK_TblHastaSahipleri_TblHayvanlar">
+            <End Role="TblHayvanlar" EntitySet="TblHayvanlar" />
+            <End Role="TblHastaSahipleri" EntitySet="TblHastaSahipleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHastaSahipleri_TblSahipler" Association="Self.FK_TblHastaSahipleri_TblSahipler">
+            <End Role="TblSahipler" EntitySet="TblSahipler" />
+            <End Role="TblHastaSahipleri" EntitySet="TblHastaSahipleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHayvanlar_TblSahipler" Association="Self.FK_TblHayvanlar_TblSahipler">
+            <End Role="TblSahipler" EntitySet="TblSahipler" />
+            <End Role="TblHayvanlar" EntitySet="TblHayvanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMuayeneKayitlari_TblHayvanlar" Association="Self.FK_TblMuayeneKayitlari_TblHayvanlar">
+            <End Role="TblHayvanlar" EntitySet="TblHayvanlar" />
+            <End Role="TblMuayeneKayitlari" EntitySet="TblMuayeneKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMuayeneKayitlari_TblIslemler" Association="Self.FK_TblMuayeneKayitlari_TblIslemler">
+            <End Role="TblIslemler" EntitySet="TblIslemler" />
+            <End Role="TblMuayeneKayitlari" EntitySet="TblMuayeneKayitlari" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbLogiVetKlinikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TblHastaSahipleri">
+          <Key>
+            <PropertyRef Name="SahipID" />
+            <PropertyRef Name="HastaID" />
+          </Key>
+          <Property Name="SahipID" Type="Int32" Nullable="false" />
+          <Property Name="HastaID" Type="Int32" Nullable="false" />
+          <Property Name="SahiplikTipi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblHayvanlar" Relationship="Self.FK_TblHastaSahipleri_TblHayvanlar" FromRole="TblHastaSahipleri" ToRole="TblHayvanlar" />
+          <NavigationProperty Name="TblSahipler" Relationship="Self.FK_TblHastaSahipleri_TblSahipler" FromRole="TblHastaSahipleri" ToRole="TblSahipler" />
+        </EntityType>
+        <EntityType Name="TblHayvanlar">
+          <Key>
+            <PropertyRef Name="HastaID" />
+          </Key>
+          <Property Name="HastaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HastaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cins" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+          <Property Name="SahipID" Type="Int32" Nullable="false" />
+          <Property Name="CipNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblHastaSahipleri" Relationship="Self.FK_TblHastaSahipleri_TblHayvanlar" FromRole="TblHayvanlar" ToRole="TblHastaSahipleri" />
+          <NavigationProperty Name="TblMuayeneKayitlari" Relationship="Self.FK_TblMuayeneKayitlari_TblHayvanlar" FromRole="TblHayvanlar" ToRole="TblMuayeneKayitlari" />
+          <NavigationProperty Name="TblSahipler" Relationship="DbLogiVetKlinikModel.FK_TblHayvanlar_TblSahipler" FromRole="TblHayvanlar" ToRole="TblSahipler" />
+        </EntityType>
+        <EntityType Name="TblIslemler">
+          <Key>
+            <PropertyRef Name="IslemID" />
+          </Key>
+          <Property Name="IslemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IslemAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BirimFiyat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="StokMiktari" Type="Int32" />
+          <NavigationProperty Name="TblMuayeneKayitlari" Relationship="Self.FK_TblMuayeneKayitlari_TblIslemler" FromRole="TblIslemler" ToRole="TblMuayeneKayitlari" />
+        </EntityType>
+        <EntityType Name="TblMuayeneKayitlari">
+          <Key>
+            <PropertyRef Name="KayitID" />
+          </Key>
+          <Property Name="KayitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HastaID" Type="Int32" Nullable="false" />
+          <Property Name="IslemTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IslemID" Type="Int32" Nullable="false" />
+          <Property Name="TeshisveNotlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ucret" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="TblHayvanlar" Relationship="Self.FK_TblMuayeneKayitlari_TblHayvanlar" FromRole="TblMuayeneKayitlari" ToRole="TblHayvanlar" />
+          <NavigationProperty Name="TblIslemler" Relationship="Self.FK_TblMuayeneKayitlari_TblIslemler" FromRole="TblMuayeneKayitlari" ToRole="TblIslemler" />
+        </EntityType>
+        <EntityType Name="TblSahipler">
+          <Key>
+            <PropertyRef Name="SahipID" />
+          </Key>
+          <Property Name="SahipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KayitTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TblHastaSahipleri" Relationship="Self.FK_TblHastaSahipleri_TblSahipler" FromRole="TblSahipler" ToRole="TblHastaSahipleri" />
+          <NavigationProperty Name="TblHayvanlar" Relationship="DbLogiVetKlinikModel.FK_TblHayvanlar_TblSahipler" FromRole="TblSahipler" ToRole="TblHayvanlar" />
+        </EntityType>
+        <Association Name="FK_TblHastaSahipleri_TblHayvanlar">
+          <End Role="TblHayvanlar" Type="Self.TblHayvanlar" Multiplicity="1" />
+          <End Role="TblHastaSahipleri" Type="Self.TblHastaSahipleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHayvanlar">
+              <PropertyRef Name="HastaID" />
+            </Principal>
+            <Dependent Role="TblHastaSahipleri">
+              <PropertyRef Name="HastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblHastaSahipleri_TblSahipler">
+          <End Role="TblSahipler" Type="Self.TblSahipler" Multiplicity="1" />
+          <End Role="TblHastaSahipleri" Type="Self.TblHastaSahipleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSahipler">
+              <PropertyRef Name="SahipID" />
+            </Principal>
+            <Dependent Role="TblHastaSahipleri">
+              <PropertyRef Name="SahipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMuayeneKayitlari_TblHayvanlar">
+          <End Role="TblHayvanlar" Type="Self.TblHayvanlar" Multiplicity="1" />
+          <End Role="TblMuayeneKayitlari" Type="Self.TblMuayeneKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblHayvanlar">
+              <PropertyRef Name="HastaID" />
+            </Principal>
+            <Dependent Role="TblMuayeneKayitlari">
+              <PropertyRef Name="HastaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblMuayeneKayitlari_TblIslemler">
+          <End Role="TblIslemler" Type="Self.TblIslemler" Multiplicity="1" />
+          <End Role="TblMuayeneKayitlari" Type="Self.TblMuayeneKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblIslemler">
+              <PropertyRef Name="IslemID" />
+            </Principal>
+            <Dependent Role="TblMuayeneKayitlari">
+              <PropertyRef Name="IslemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DVetKlinikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TblHastaSahipleri" EntityType="Self.TblHastaSahipleri" />
+          <EntitySet Name="TblHayvanlar" EntityType="Self.TblHayvanlar" />
+          <EntitySet Name="TblIslemler" EntityType="Self.TblIslemler" />
+          <EntitySet Name="TblMuayeneKayitlari" EntityType="Self.TblMuayeneKayitlari" />
+          <EntitySet Name="TblSahipler" EntityType="Self.TblSahipler" />
+          <AssociationSet Name="FK_TblHastaSahipleri_TblHayvanlar" Association="Self.FK_TblHastaSahipleri_TblHayvanlar">
+            <End Role="TblHayvanlar" EntitySet="TblHayvanlar" />
+            <End Role="TblHastaSahipleri" EntitySet="TblHastaSahipleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblHastaSahipleri_TblSahipler" Association="Self.FK_TblHastaSahipleri_TblSahipler">
+            <End Role="TblSahipler" EntitySet="TblSahipler" />
+            <End Role="TblHastaSahipleri" EntitySet="TblHastaSahipleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMuayeneKayitlari_TblHayvanlar" Association="Self.FK_TblMuayeneKayitlari_TblHayvanlar">
+            <End Role="TblHayvanlar" EntitySet="TblHayvanlar" />
+            <End Role="TblMuayeneKayitlari" EntitySet="TblMuayeneKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblMuayeneKayitlari_TblIslemler" Association="Self.FK_TblMuayeneKayitlari_TblIslemler">
+            <End Role="TblIslemler" EntitySet="TblIslemler" />
+            <End Role="TblMuayeneKayitlari" EntitySet="TblMuayeneKayitlari" />
+          </AssociationSet>
+          <EntitySet Name="TblKullanicilar" EntityType="DbLogiVetKlinikModel.TblKullanicilar" />
+          <AssociationSet Name="FK_TblHayvanlar_TblSahipler" Association="DbLogiVetKlinikModel.FK_TblHayvanlar_TblSahipler">
+            <End Role="TblSahipler" EntitySet="TblSahipler" />
+            <End Role="TblHayvanlar" EntitySet="TblHayvanlar" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TblKullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_TblHayvanlar_TblSahipler">
+          <End Type="DbLogiVetKlinikModel.TblSahipler" Role="TblSahipler" Multiplicity="1" />
+          <End Type="DbLogiVetKlinikModel.TblHayvanlar" Role="TblHayvanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblSahipler">
+              <PropertyRef Name="SahipID" />
+            </Principal>
+            <Dependent Role="TblHayvanlar">
+              <PropertyRef Name="SahipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbLogiVetKlinikModelStoreContainer" CdmEntityContainer="DVetKlinikEntities">
+          <EntitySetMapping Name="TblHastaSahipleri">
+            <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblHastaSahipleri">
+              <MappingFragment StoreEntitySet="TblHastaSahipleri">
+                <ScalarProperty Name="SahipID" ColumnName="SahipID" />
+                <ScalarProperty Name="HastaID" ColumnName="HastaID" />
+                <ScalarProperty Name="SahiplikTipi" ColumnName="SahiplikTipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblHayvanlar">
+            <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblHayvanlar">
+              <MappingFragment StoreEntitySet="TblHayvanlar">
+                <ScalarProperty Name="HastaID" ColumnName="HastaID" />
+                <ScalarProperty Name="HastaAdi" ColumnName="HastaAdi" />
+                <ScalarProperty Name="Tur" ColumnName="Tur" />
+                <ScalarProperty Name="Cins" ColumnName="Cins" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="SahipID" ColumnName="SahipID" />
+                <ScalarProperty Name="CipNo" ColumnName="CipNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblIslemler">
+            <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblIslemler">
+              <MappingFragment StoreEntitySet="TblIslemler">
+                <ScalarProperty Name="IslemID" ColumnName="IslemID" />
+                <ScalarProperty Name="IslemAdi" ColumnName="IslemAdi" />
+                <ScalarProperty Name="BirimFiyat" ColumnName="BirimFiyat" />
+                <ScalarProperty Name="StokMiktari" ColumnName="StokMiktari" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMuayeneKayitlari">
+            <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblMuayeneKayitlari">
+              <MappingFragment StoreEntitySet="TblMuayeneKayitlari">
+                <ScalarProperty Name="KayitID" ColumnName="KayitID" />
+                <ScalarProperty Name="HastaID" ColumnName="HastaID" />
+                <ScalarProperty Name="IslemTarihi" ColumnName="IslemTarihi" />
+                <ScalarProperty Name="IslemID" ColumnName="IslemID" />
+                <ScalarProperty Name="TeshisveNotlar" ColumnName="TeshisveNotlar" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblSahipler">
+            <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblSahipler">
+              <MappingFragment StoreEntitySet="TblSahipler">
+                <ScalarProperty Name="SahipID" ColumnName="SahipID" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Eposta" ColumnName="Eposta" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblKullanicilar">
+            <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblKullanicilar">
+              <MappingFragment StoreEntitySet="TblKullanicilar">
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
