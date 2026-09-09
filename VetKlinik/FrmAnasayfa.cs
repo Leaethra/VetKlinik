@@ -16,5 +16,15 @@ namespace VetKlinik
         {
             InitializeComponent();
         }
+
+        private void FrmVetKlinikAnaSyf_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmVetKlinikAnaSyf_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

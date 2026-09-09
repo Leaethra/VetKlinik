@@ -6,7 +6,6 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace VetKlinik
 {
@@ -33,7 +32,7 @@ namespace VetKlinik
                 mesaj = "Çip numarası alanı boş bırakılamaz.";
             else if (string.IsNullOrWhiteSpace(hasta.HastaAdi))
                 mesaj = "Hasta Adı alanı boş bırakılamaz.";
-            else if (db.DoesChipExist(hasta.CipNo))
+            else if (VeriYoneticisi.DoesChipExist(hasta.CipNo))
                 mesaj = "Bu çip numarasına sahip bir hayvan sistemde zaten kayıtlı.";
             else
                 don = true;
@@ -98,7 +97,7 @@ namespace VetKlinik
                 mesaj = "Ad Soyad alanı boş bırakılamaz.";
             else if (string.IsNullOrWhiteSpace(sahip.Telefon))
                 mesaj = "Telefon numarası alanı boş bırakılamaz.";
-            else if (db.DoesOwnerExist(sahip.Telefon))
+            else if (VeriYoneticisi.DoesOwnerExist(sahip.Telefon))
                 mesaj = "Bu telefon numarasına sahip bir kullanıcı sistemde zaten kayıtlı.";
             else
                 don = true;
@@ -159,7 +158,7 @@ namespace VetKlinik
                 mesaj = "İşlem veri giriş bilgileri hatalı.";
             else if (string.IsNullOrWhiteSpace(islem.IslemAdi))
                 mesaj = "Yapılacak işlem adı veya tanımı boş bırakılamaz.";
-            else if (islem.BirimFiyat == null)
+            else if (islem.BirimFiyat.ToString() == null)
                 mesaj = "Yapılacak işlemin birim fiyatı boş bırakılamaz.";
             else
                 don = true;
@@ -179,7 +178,7 @@ namespace VetKlinik
                 mesaj = "Güncellenecek işleme ait bilgiler bulunamadı.";
             else if (string.IsNullOrWhiteSpace(islem.IslemAdi))
                 mesaj = "İşlem adı alanı boş bırakılarak güncelleme yapılamaz.";
-            else if (islem.BirimFiyat == null)
+            else if (islem.BirimFiyat.ToString() == null)
                 mesaj = "Yapılacak işlemin birim fiyatı boş bırakılarak işlem yapılamaz.";
             else
                 don = true;
@@ -335,17 +334,15 @@ namespace VetKlinik
         {
             mesaj = "";
             bool don = false;
-
             if (string.IsNullOrWhiteSpace(kullaniciadi) || string.IsNullOrWhiteSpace(sifre))
                 mesaj = "Kullanıcı adı ve şifre alanları boş bırakılamaz.";
             else
             {
-                if (db.LoginCheck(kullaniciadi.Trim(), sifre.Trim()) == false)
+                if (VeriYoneticisi.LoginCheck(kullaniciadi.Trim(), sifre.Trim()) == false)
                     mesaj = "Kullanıcı adı veya şifre hatalı.";
                 else
-                    don = true; // Hiçbir sorun yoksa metoda onay veriyoruz 
+                    don = true; //hçbir sorun yoksa metoda onay veriyoruz 
             }
-
             return don;
         }
 
@@ -368,7 +365,7 @@ namespace VetKlinik
                 mesaj = "Şifre alanı boş bırakılamaz.";
             else if (yeniKullanici.Sifre.Trim().Length < 4)
                 mesaj = "Şifre en az 4 karakterden oluşmalıdır.";
-            else if (db.DoesUserExist(yeniKullanici.KullaniciAdi.Trim()))
+            else if (VeriYoneticisi.DoesUserExist(yeniKullanici.KullaniciAdi.Trim()))
                 mesaj = "Bu kullanıcı adı zaten alınmış.";
             else
                 don = true;

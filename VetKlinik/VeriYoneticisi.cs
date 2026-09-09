@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace VetKlinik
 {
+    //bir sınıf sadece bir sınıftan inherit alabilir.
+    //bir sınıf N tane interface'den inherit alabilir.
+    //bir sınıf hem sınıftan hem de interface' den inherit alabilir. 
+    //ancak önce sınıf sonra interface
+    //örnek: Child : MasterSınıf, Interface1, interface2 ...
+
     public class VeriYoneticisi : DVetKlinikEntities //contextden inherit aldığım ksım 
     {
+        //DVetKlinikEntities DbContext = new DVetKlinikEntities();
 
         public List<TblHayvanlar> GetAnimal()
         {
@@ -34,18 +41,21 @@ namespace VetKlinik
             SaveChanges();
         }
 
-        public bool DoesChipExist(string cipNo)
+        public static bool DoesChipExist(string cipNo)
         {
             if (string.IsNullOrEmpty(cipNo))
                 return false;//TblHayvanlarda dışarıdan gelen CipNo ile eşleşen kayıt var mı diy bakıyoruz
-            return this.TblHayvanlar.Any(h => h.CipNo == cipNo);
+
+            using (var db = new DVetKlinikEntities())
+            {
+                return db.TblHayvanlar.Any(h => h.CipNo == cipNo);
+            }
         }
 
         public TblHayvanlar GetAnimalById(int animalId) //bununla ekranda seçtiğimiz hayvanın bütün kayıtlarını görebileceğiz
         {
             return this.TblHayvanlar.FirstOrDefault(a => a.HastaID == animalId);
         }
-
 
 
         public List<TblSahipler> GetOwners()
@@ -71,11 +81,15 @@ namespace VetKlinik
             SaveChanges();
         }
 
-        public bool DoesOwnerExist(string telefon)
+        public static bool DoesOwnerExist(string telefon)
         {
             if (string.IsNullOrEmpty(telefon))
                 return false;
-            return this.TblSahipler.Any(h => h.Telefon == telefon);
+
+            using (var db = new DVetKlinikEntities())
+            {
+                return db.TblSahipler.Any(h => h.Telefon == telefon);
+            }
         }
 
         public TblSahipler GetOwnerById(int ownerId)
@@ -107,7 +121,6 @@ namespace VetKlinik
             SaveChanges();
         }
 
-
         public List<TblMuayeneKayitlari> GetExaminations()
         {
             return this.TblMuayeneKayitlari.ToList(); //muayenedeki notlar tarih değiştiğinde
@@ -130,7 +143,6 @@ namespace VetKlinik
             this.TblMuayeneKayitlari.Remove(muayene); //muayene kaydını siler
             SaveChanges();
         }
-
 
         public List<TblHastaSahipleri> GetAnimalOwners()
         {
@@ -160,15 +172,21 @@ namespace VetKlinik
             return this.TblKullanicilar.ToList();
         }
 
-        public bool LoginCheck(string kullaniciAdi, string sifre)
+        public static bool LoginCheck(string kullaniciAdi, string sifre)
         {
 
-            return this.TblKullanicilar.Any(kullanici => kullanici.KullaniciAdi == kullaniciAdi && kullanici.Sifre == sifre);
+            using (var db = new DVetKlinikEntities())
+            {
+                return db.TblKullanicilar.Any(kullanici => kullanici.KullaniciAdi == kullaniciAdi && kullanici.Sifre == sifre);
+            }
         }
 
-        public bool DoesUserExist(string kullaniciAdi) //böyle bir kullanıcı daha önce var mıydı?
+        public static bool DoesUserExist(string kullaniciAdi) //böyle bir kullanıcı daha önce var mıydı?
         {
-            return this.TblKullanicilar.Any(kullanici => kullanici.KullaniciAdi == kullaniciAdi);
+            using (var db = new DVetKlinikEntities())
+            {
+                return db.TblKullanicilar.Any(kullanici => kullanici.KullaniciAdi == kullaniciAdi);
+            }
         }
 
         public void CreateUser(TblKullanicilar yeniKullanici)

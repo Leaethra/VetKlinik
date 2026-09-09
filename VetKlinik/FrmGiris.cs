@@ -20,25 +20,39 @@ namespace VetKlinik
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            string kullanici = txtKullaniciAdi.Text;
+            string kullaniciAdi = txtKullaniciAdi.Text;
             string sifre = txtSifre.Text;
 
             ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
-
-            if (validator.ValidateLogin(kullanici, sifre, out string gelenMesaj))
+            bool Basarili = validator.ValidateLogin(kullaniciAdi, sifre, out string mesaj);
+            if (Basarili)
             {
-                MessageBox.Show("Giriş başarılı! Sisteme yönlendiriliyorsunuz.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);  
-                FrmVetKlinikAnaSyf anaEkran = new FrmVetKlinikAnaSyf();
-                anaEkran.Show();
-                this.Hide();
+                if (kullaniciAdi == "admin") //tek bir hesap yönetim paneline erişebiliyor
+                {
+                    MessageBox.Show("Yönetici girişi başarılı! Kullanıcı Yönetim Paneline yönlendiriliyorsunuz.", "Yönetici Girişi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FrmYonetim yonetimEkrani = new FrmYonetim();
+                    yonetimEkrani.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Giriş başarılı! VetKlinik Sistemine yönlendiriliyorsunuz.", "Kulanıcı Girişi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FrmVetKlinikAnaSyf anaEkran = new FrmVetKlinikAnaSyf();
+                    anaEkran.Show();
+                    this.Hide(); //giriş formunu gizler
+                }
             }
             else
             {
-                MessageBox.Show(gelenMesaj, "Giriş Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(mesaj, "Giriş Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSifre.Clear();
                 txtKullaniciAdi.Focus();
             }
+
         }
-   
+        private void FrmGiris_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

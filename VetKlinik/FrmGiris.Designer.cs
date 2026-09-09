@@ -40,6 +40,9 @@
             // 
             // txtKullaniciAdi
             // 
+            this.txtKullaniciAdi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtKullaniciAdi.Location = new System.Drawing.Point(24, 63);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(147, 20);
@@ -47,6 +50,9 @@
             // 
             // txtSifre
             // 
+            this.txtSifre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSifre.Location = new System.Drawing.Point(24, 125);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(147, 20);
@@ -55,6 +61,9 @@
             // 
             // lblKullaniciAdi
             // 
+            this.lblKullaniciAdi.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblKullaniciAdi.AutoSize = true;
             this.lblKullaniciAdi.Font = new System.Drawing.Font("Sylfaen", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblKullaniciAdi.Location = new System.Drawing.Point(19, 33);
@@ -65,6 +74,9 @@
             // 
             // lblSifre
             // 
+            this.lblSifre.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSifre.AutoSize = true;
             this.lblSifre.Font = new System.Drawing.Font("Sylfaen", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblSifre.Location = new System.Drawing.Point(19, 95);
@@ -75,6 +87,9 @@
             // 
             // btnGiris
             // 
+            this.btnGiris.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGiris.BackColor = System.Drawing.Color.Transparent;
             this.btnGiris.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGiris.Location = new System.Drawing.Point(38, 178);
@@ -87,19 +102,24 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.panel1.Controls.Add(this.btnGiris);
             this.panel1.Controls.Add(this.lblSifre);
             this.panel1.Controls.Add(this.lblKullaniciAdi);
             this.panel1.Controls.Add(this.txtSifre);
             this.panel1.Controls.Add(this.txtKullaniciAdi);
-            this.panel1.Location = new System.Drawing.Point(64, 111);
+            this.panel1.Location = new System.Drawing.Point(60, 110);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(199, 280);
             this.panel1.TabIndex = 5;
             // 
             // lblLoginTitle
             // 
+            this.lblLoginTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLoginTitle.AutoSize = true;
             this.lblLoginTitle.Font = new System.Drawing.Font("Segoe Print", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoginTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -114,7 +134,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(332, 450);
+            this.ClientSize = new System.Drawing.Size(324, 451);
             this.Controls.Add(this.lblLoginTitle);
             this.Controls.Add(this.panel1);
             this.Name = "FrmVetKlinikGiris";

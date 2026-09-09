@@ -33,27 +33,23 @@
             this.txtYeniKullanici = new System.Windows.Forms.TextBox();
             this.txtYeniSifre = new System.Windows.Forms.TextBox();
             this.dgvKullanicilar = new System.Windows.Forms.DataGridView();
-            this.kullaniciIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kullaniciAdiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sifreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblKullanicilarBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbLoginVetKlinikDataSet = new VetKlinik.DbLoginVetKlinikDataSet();
-            this.tblKullanicilarTableAdapter = new VetKlinik.DbLoginVetKlinikDataSetTableAdapters.TblKullanicilarTableAdapter();
             this.lblkullaniciAdi = new System.Windows.Forms.Label();
             this.lblSifre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKullanicilar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblKullanicilarBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbLoginVetKlinikDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnKullaniciEkle
             // 
+            this.btnKullaniciEkle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnKullaniciEkle.Location = new System.Drawing.Point(282, 76);
             this.btnKullaniciEkle.Name = "btnKullaniciEkle";
             this.btnKullaniciEkle.Size = new System.Drawing.Size(93, 23);
             this.btnKullaniciEkle.TabIndex = 0;
             this.btnKullaniciEkle.Text = "EKLE\r\n\r\n";
             this.btnKullaniciEkle.UseVisualStyleBackColor = true;
+            this.btnKullaniciEkle.Click += new System.EventHandler(this.btnKullaniciEkle_Click);
             // 
             // txtYeniKullanici
             // 
@@ -71,59 +67,27 @@
             // 
             // dgvKullanicilar
             // 
+            this.dgvKullanicilar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvKullanicilar.AutoGenerateColumns = false;
+            this.dgvKullanicilar.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvKullanicilar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKullanicilar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.kullaniciIDDataGridViewTextBoxColumn,
-            this.kullaniciAdiDataGridViewTextBoxColumn,
-            this.sifreDataGridViewTextBoxColumn});
             this.dgvKullanicilar.DataSource = this.tblKullanicilarBindingSource;
-            this.dgvKullanicilar.Location = new System.Drawing.Point(29, 125);
+            this.dgvKullanicilar.Location = new System.Drawing.Point(30, 120);
             this.dgvKullanicilar.Name = "dgvKullanicilar";
+            this.dgvKullanicilar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKullanicilar.Size = new System.Drawing.Size(346, 286);
             this.dgvKullanicilar.TabIndex = 3;
-            // 
-            // kullaniciIDDataGridViewTextBoxColumn
-            // 
-            this.kullaniciIDDataGridViewTextBoxColumn.DataPropertyName = "KullaniciID";
-            this.kullaniciIDDataGridViewTextBoxColumn.HeaderText = "KullaniciID";
-            this.kullaniciIDDataGridViewTextBoxColumn.Name = "kullaniciIDDataGridViewTextBoxColumn";
-            this.kullaniciIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // kullaniciAdiDataGridViewTextBoxColumn
-            // 
-            this.kullaniciAdiDataGridViewTextBoxColumn.DataPropertyName = "KullaniciAdi";
-            this.kullaniciAdiDataGridViewTextBoxColumn.HeaderText = "KullaniciAdi";
-            this.kullaniciAdiDataGridViewTextBoxColumn.Name = "kullaniciAdiDataGridViewTextBoxColumn";
-            // 
-            // sifreDataGridViewTextBoxColumn
-            // 
-            this.sifreDataGridViewTextBoxColumn.DataPropertyName = "Sifre";
-            this.sifreDataGridViewTextBoxColumn.HeaderText = "Sifre";
-            this.sifreDataGridViewTextBoxColumn.Name = "sifreDataGridViewTextBoxColumn";
-            // 
-            // tblKullanicilarBindingSource
-            // 
-            this.tblKullanicilarBindingSource.DataMember = "TblKullanicilar";
-            this.tblKullanicilarBindingSource.DataSource = this.dbLoginVetKlinikDataSet;
-            // 
-            // dbLoginVetKlinikDataSet
-            // 
-            this.dbLoginVetKlinikDataSet.DataSetName = "DbLoginVetKlinikDataSet";
-            this.dbLoginVetKlinikDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblKullanicilarTableAdapter
-            // 
-            this.tblKullanicilarTableAdapter.ClearBeforeFill = true;
             // 
             // lblkullaniciAdi
             // 
             this.lblkullaniciAdi.AutoSize = true;
             this.lblkullaniciAdi.Location = new System.Drawing.Point(29, 59);
             this.lblkullaniciAdi.Name = "lblkullaniciAdi";
-            this.lblkullaniciAdi.Size = new System.Drawing.Size(64, 13);
+            this.lblkullaniciAdi.Size = new System.Drawing.Size(88, 13);
             this.lblkullaniciAdi.TabIndex = 4;
-            this.lblkullaniciAdi.Text = "Kullanıcı Adı";
+            this.lblkullaniciAdi.Text = "Yeni Kullanıcı Adı";
             // 
             // lblSifre
             // 
@@ -138,7 +102,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 450);
+            this.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ClientSize = new System.Drawing.Size(409, 451);
             this.Controls.Add(this.lblSifre);
             this.Controls.Add(this.lblkullaniciAdi);
             this.Controls.Add(this.dgvKullanicilar);
@@ -146,11 +111,12 @@
             this.Controls.Add(this.txtYeniKullanici);
             this.Controls.Add(this.btnKullaniciEkle);
             this.Name = "FrmYonetim";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VetKlinik Yönetim";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmYonetim_FormClosing);
             this.Load += new System.EventHandler(this.FrmYonetim_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKullanicilar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblKullanicilarBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbLoginVetKlinikDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,9 +128,9 @@
         private System.Windows.Forms.TextBox txtYeniKullanici;
         private System.Windows.Forms.TextBox txtYeniSifre;
         private System.Windows.Forms.DataGridView dgvKullanicilar;
-        private DbLoginVetKlinikDataSet dbLoginVetKlinikDataSet;
+        
         private System.Windows.Forms.BindingSource tblKullanicilarBindingSource;
-        private DbLoginVetKlinikDataSetTableAdapters.TblKullanicilarTableAdapter tblKullanicilarTableAdapter;
+        
         private System.Windows.Forms.DataGridViewTextBoxColumn kullaniciIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kullaniciAdiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sifreDataGridViewTextBoxColumn;
