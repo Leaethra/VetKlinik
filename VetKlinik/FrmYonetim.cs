@@ -21,7 +21,6 @@ namespace VetKlinik
         private void FrmYonetim_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dbLoginVetKlinikDataSet.TblKullanicilar' table. You can move, or remove it, as needed.
-            
         }
 
         private void btnKullaniciEkle_Click(object sender, EventArgs e)
@@ -31,16 +30,20 @@ namespace VetKlinik
             yeniKullanici.Sifre = txtYeniSifre.Text;
 
             ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
+            VeriYoneticisi db = new VeriYoneticisi();
 
-            if (validator.ValidateCreateUser(yeniKullanici, out string gelenMesaj))
+            string gelenMesaj;
+            bool basarili = validator.ValidateCreateUser(yeniKullanici, out gelenMesaj);
+
+            if (basarili)
             {
+                db.CreateUser(yeniKullanici);
+
                 MessageBox.Show("Yeni personel sisteme başarıyla tanımlandı! Artık kendi ana sayfasını açabilir.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //ttboxları temizle
                 txtYeniKullanici.Clear();
                 txtYeniSifre.Clear();
-
-                
             }
             else
                 MessageBox.Show(gelenMesaj, "İşlem Başarısız.", MessageBoxButtons.OK, MessageBoxIcon.Warning);

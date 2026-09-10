@@ -11,9 +11,6 @@ namespace VetKlinik
 {
     public class ValidasyonYoneticisi
     {
-        private readonly VeriYoneticisi db = new VeriYoneticisi();
-
-
         //ANIMAL
         public bool ValidateGetAnimal(TblHayvanlar hasta, out string mesaj)
         {
@@ -37,9 +34,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                //validasyonda sorun yoksa veritabanını tetikle çağır
-                db.CreateAnimal(hasta);
             return don;
         }
 
@@ -57,9 +51,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.UpdateAnimal(hasta); //validasyonda sorun yoksa veritabanını tetikle çağır
-
             return don;
         }
 
@@ -72,9 +63,6 @@ namespace VetKlinik
                 mesaj = "Silinecek hayvana ait geçerli bir ID bulunamadı.";
             else
                 don = true;
-
-            if (don)
-                db.DeleteAnimal(hasta);
 
             return don;
         }
@@ -102,9 +90,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.CreateOwner(sahip);
-
             return don;
         }
 
@@ -120,9 +105,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.UpdateOwner(sahip);
-
             return don;
         }
 
@@ -135,9 +117,6 @@ namespace VetKlinik
                 mesaj = "Silinecek sahibe ait bir ID bulunamadı.";
             else
                 don = true;
-
-            if (don)
-                db.DeleteOwner(sahip);
 
             return don;
         }
@@ -158,13 +137,10 @@ namespace VetKlinik
                 mesaj = "İşlem veri giriş bilgileri hatalı.";
             else if (string.IsNullOrWhiteSpace(islem.IslemAdi))
                 mesaj = "Yapılacak işlem adı veya tanımı boş bırakılamaz.";
-            else if (islem.BirimFiyat.ToString() == null)
+            else if (islem.BirimFiyat == null)
                 mesaj = "Yapılacak işlemin birim fiyatı boş bırakılamaz.";
             else
                 don = true;
-
-            if (don)
-                db.CreateOperation(islem);
 
             return don;
         }
@@ -178,13 +154,10 @@ namespace VetKlinik
                 mesaj = "Güncellenecek işleme ait bilgiler bulunamadı.";
             else if (string.IsNullOrWhiteSpace(islem.IslemAdi))
                 mesaj = "İşlem adı alanı boş bırakılarak güncelleme yapılamaz.";
-            else if (islem.BirimFiyat.ToString() == null)
+            else if (islem.BirimFiyat == null)
                 mesaj = "Yapılacak işlemin birim fiyatı boş bırakılarak işlem yapılamaz.";
             else
                 don = true;
-
-            if (don)
-                db.UpdateOperation(islem);
 
             return don;
         }
@@ -199,8 +172,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.DeleteOperation(islem);
             return don;
         }
 
@@ -228,9 +199,6 @@ namespace VetKlinik
                 else
                     don = true;
 
-            if (don)
-                db.CreateExamination(muayene);
-
             return don;
         }
 
@@ -248,9 +216,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.UpdateExamination(muayene);
-
             return don;
         }
 
@@ -263,9 +228,6 @@ namespace VetKlinik
                 mesaj = "Silinecek muayeneye ait geçerli bilgiler bulunamadı.";
             else
                 don = true;
-
-            if (don)
-                db.DeleteExamination(muayene);
 
             return don;
         }
@@ -291,9 +253,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.CreateAnimalOwner(eslesme);
-
             return don;
         }
 
@@ -306,9 +265,6 @@ namespace VetKlinik
                 mesaj = "Güncellenecek eşleşmeye dair veri bulunamadı.";
             else
                 don = true;
-
-            if (don)
-                db.UpdateAnimalOwner(eslesme);
 
             return don;
         }
@@ -323,9 +279,6 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.DeleteAnimalOwner(eslesme);
-
             return don;
         }
 
@@ -334,6 +287,7 @@ namespace VetKlinik
         {
             mesaj = "";
             bool don = false;
+
             if (string.IsNullOrWhiteSpace(kullaniciadi) || string.IsNullOrWhiteSpace(sifre))
                 mesaj = "Kullanıcı adı ve şifre alanları boş bırakılamaz.";
             else
@@ -343,6 +297,7 @@ namespace VetKlinik
                 else
                     don = true; //hçbir sorun yoksa metoda onay veriyoruz 
             }
+
             return don;
         }
 
@@ -370,11 +325,7 @@ namespace VetKlinik
             else
                 don = true;
 
-            if (don)
-                db.CreateUser(yeniKullanici);
-
             return don;
         }
-
     }
 }

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace VetKlinik
 {
@@ -24,8 +23,11 @@ namespace VetKlinik
             string sifre = txtSifre.Text;
 
             ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
-            bool Basarili = validator.ValidateLogin(kullaniciAdi, sifre, out string mesaj);
-            if (Basarili)
+
+            string mesaj;
+            bool basarili = validator.ValidateLogin(kullaniciAdi, sifre, out mesaj);
+
+            if (basarili)
             {
                 if (kullaniciAdi == "admin") //tek bir hesap yönetim paneline erişebiliyor
                 {
@@ -48,8 +50,8 @@ namespace VetKlinik
                 txtSifre.Clear();
                 txtKullaniciAdi.Focus();
             }
-
         }
+
         private void FrmGiris_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
