@@ -283,22 +283,27 @@ namespace VetKlinik
         }
 
         //USERS
-        public bool ValidateLogin(string kullaniciadi, string sifre, out string mesaj)
+        public TblKullanicilar ValidateLogin(string kullaniciadi, string sifre, out string mesaj)
         {
             mesaj = "";
-            bool don = false;
 
             if (string.IsNullOrWhiteSpace(kullaniciadi) || string.IsNullOrWhiteSpace(sifre))
-                mesaj = "Kullanıcı adı ve şifre alanları boş bırakılamaz.";
-            else
             {
-                if (VeriYoneticisi.LoginCheck(kullaniciadi.Trim(), sifre.Trim()) == false)
-                    mesaj = "Kullanıcı adı veya şifre hatalı.";
-                else
-                    don = true; //hçbir sorun yoksa metoda onay veriyoruz 
+                mesaj = "Kullanıcı adı ve şifre alanları boş bırakılamaz.";
+                return null;
             }
 
-            return don;
+            TblKullanicilar kullanici = VeriYoneticisi.LoginCheck(
+                kullaniciadi.Trim(),
+                sifre.Trim());
+
+            if (kullanici == null)
+            {
+                mesaj = "Kullanıcı adı veya şifre hatalı.";
+                return null;
+            }
+
+            return kullanici;
         }
 
         public bool ValidateGetUsers(out string mesaj)
@@ -320,8 +325,48 @@ namespace VetKlinik
                 mesaj = "Şifre alanı boş bırakılamaz.";
             else if (yeniKullanici.Sifre.Trim().Length < 4)
                 mesaj = "Şifre en az 4 karakterden oluşmalıdır.";
+            else if (string.IsNullOrWhiteSpace(yeniKullanici.Yetki))
+                mesaj = "Kullanıcı yetkisi seçilmelidir.";
+            else if (yeniKullanici.Yetki != "Admin" && yeniKullanici.Yetki != "Kullanici")
+                mesaj = "Geçersiz kullanıcı yetkisi.";
             else if (VeriYoneticisi.DoesUserExist(yeniKullanici.KullaniciAdi.Trim()))
                 mesaj = "Bu kullanıcı adı zaten alınmış.";
+            else
+                don = true;
+
+            return don;
+        }
+
+        public bool ValidateUpdateUser(TblKullanicilar kullanici, out string mesaj)
+        {
+            mesaj = "";
+            bool don = false;
+
+            if (kullanici == null || kullanici.KullaniciID == 0)
+                mesaj = "Güncellenecek kullanıcıya ait geçerli bir ID bulunamadı.";
+            else if (string.IsNullOrWhiteSpace(kullanici.KullaniciAdi))
+                mesaj = "Kullanıcı adı alanı boş bırakılamaz.";
+            else if (string.IsNullOrWhiteSpace(kullanici.Sifre))
+                mesaj = "Şifre alanı boş bırakılamaz.";
+            else if (kullanici.Sifre.Trim().Length < 4)
+                mesaj = "Şifre en az 4 karakterden oluşmalıdır.";
+            else if (string.IsNullOrWhiteSpace(kullanici.Yetki))
+                mesaj = "Kullanıcı yetkisi seçilmelidir.";
+            else if (kullanici.Yetki != "Admin" && kullanici.Yetki != "Kullanici")
+                mesaj = "Geçersiz kullanıcı yetkisi.";
+            else
+                don = true;
+
+            return don;
+        }
+
+        public bool ValidateDeleteUser(TblKullanicilar kullanici, out string mesaj)
+        {
+            mesaj = "";
+            bool don = false;
+
+            if (kullanici == null || kullanici.KullaniciID == 0)
+                mesaj = "Silinecek kullanıcıya ait geçerli bir ID bulunamadı.";
             else
                 don = true;
 

@@ -25,34 +25,38 @@ namespace VetKlinik
             ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
 
             string mesaj;
-            bool basarili = validator.ValidateLogin(kullaniciAdi, sifre, out mesaj);
 
-            if (basarili)
+            TblKullanicilar kullanici = validator.ValidateLogin(
+                kullaniciAdi,
+                sifre,
+                out mesaj);
+
+            if (kullanici != null)
             {
-                if (kullaniciAdi == "admin") //tek bir hesap yönetim paneline erişebiliyor
+                if (kullanici.Yetki == "Admin")
                 {
-                    MessageBox.Show("Yönetici girişi başarılı! Kullanıcı Yönetim Paneline yönlendiriliyorsunuz.", "Yönetici Girişi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Yönetici girişi başarılı! Kullanıcı Yönetim Paneline yönlendiriliyorsunuz.","Yönetici Girişi",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     FrmYonetim yonetimEkrani = new FrmYonetim();
                     yonetimEkrani.Show();
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Giriş başarılı! VetKlinik Sistemine yönlendiriliyorsunuz.", "Kulanıcı Girişi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show( "Giriş başarılı! VetKlinik Sistemine yönlendiriliyorsunuz.","Kullanıcı Girişi",MessageBoxButtons.OK, MessageBoxIcon.Information);
                     FrmVetKlinikAnaSyf anaEkran = new FrmVetKlinikAnaSyf();
                     anaEkran.Show();
-                    this.Hide(); //giriş formunu gizler
+                    this.Hide();
                 }
             }
             else
             {
-                MessageBox.Show(mesaj, "Giriş Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(mesaj,"Giriş Başarısız",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSifre.Clear();
                 txtKullaniciAdi.Focus();
             }
         }
 
-        private void FrmGiris_FormClosing(object sender, FormClosingEventArgs e)
+        private void FrmGiris_FormClosed(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }

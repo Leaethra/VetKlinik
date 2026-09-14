@@ -42,6 +42,7 @@
           <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Yetki" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="TblMuayeneKayitlari">
           <Key>
@@ -63,7 +64,7 @@
           <Property Name="Telefon" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Eposta" Type="nvarchar" MaxLength="50" />
           <Property Name="KayitTarihi" Type="date" Nullable="false" />
-          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_TblHastaSahipleri_TblHayvanlar">
           <End Role="TblHayvanlar" Type="Self.TblHayvanlar" Multiplicity="1" />
@@ -215,7 +216,7 @@
           <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Eposta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="KayitTarihi" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TblHastaSahipleri" Relationship="Self.FK_TblHastaSahipleri_TblSahipler" FromRole="TblSahipler" ToRole="TblHastaSahipleri" />
           <NavigationProperty Name="TblHayvanlar" Relationship="DbLogiVetKlinikModel.FK_TblHayvanlar_TblSahipler" FromRole="TblSahipler" ToRole="TblHayvanlar" />
         </EntityType>
@@ -302,6 +303,7 @@
           <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sifre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Yetki" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_TblHayvanlar_TblSahipler">
           <End Type="DbLogiVetKlinikModel.TblSahipler" Role="TblSahipler" Multiplicity="1" />
@@ -380,6 +382,7 @@
           <EntitySetMapping Name="TblKullanicilar">
             <EntityTypeMapping TypeName="DbLogiVetKlinikModel.TblKullanicilar">
               <MappingFragment StoreEntitySet="TblKullanicilar">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
                 <ScalarProperty Name="Sifre" ColumnName="Sifre" />
                 <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
                 <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />

@@ -172,12 +172,13 @@ namespace VetKlinik
             return this.TblKullanicilar.ToList();
         }
 
-        public static bool LoginCheck(string kullaniciAdi, string sifre)
+        public static TblKullanicilar LoginCheck(string kullaniciAdi, string sifre)
         {
-
             using (var db = new DVetKlinikEntities())
             {
-                return db.TblKullanicilar.Any(kullanici => kullanici.KullaniciAdi == kullaniciAdi && kullanici.Sifre == sifre);
+                return db.TblKullanicilar.FirstOrDefault(
+                    kullanici => kullanici.KullaniciAdi == kullaniciAdi
+                              && kullanici.Sifre == sifre);
             }
         }
 
@@ -192,6 +193,18 @@ namespace VetKlinik
         public void CreateUser(TblKullanicilar yeniKullanici)
         {
             this.TblKullanicilar.Add(yeniKullanici);
+            SaveChanges();
+        }
+
+        public void UpdateUser(TblKullanicilar kullanici)
+        {
+            Entry(kullanici).State = EntityState.Modified;
+            SaveChanges();
+        }
+
+        public void DeleteUser(TblKullanicilar kullanici)
+        {
+            this.TblKullanicilar.Remove(kullanici);
             SaveChanges();
         }
     }

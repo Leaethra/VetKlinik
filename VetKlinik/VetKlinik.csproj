@@ -61,6 +61,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbVetKlinikDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbVetKlinikDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHastalar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHastalar.Designer.cs">
+      <DependentUpon>FrmHastalar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSahipler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSahipler.Designer.cs">
+      <DependentUpon>FrmSahipler.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmYonetim.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +133,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VetKlinikModel.edmx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmHastalar.resx">
+      <DependentUpon>FrmHastalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSahipler.resx">
+      <DependentUpon>FrmSahipler.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmYonetim.resx">
       <DependentUpon>FrmYonetim.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +157,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="dbVetKlinikDataSet.xsc">
+      <DependentUpon>dbVetKlinikDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dbVetKlinikDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbVetKlinikDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dbVetKlinikDataSet.xss">
+      <DependentUpon>dbVetKlinikDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
