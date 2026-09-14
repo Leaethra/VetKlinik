@@ -139,8 +139,7 @@
             // 
             // lblAnaSyfBaslik
             // 
-            this.lblAnaSyfBaslik.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAnaSyfBaslik.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAnaSyfBaslik.AutoSize = true;
             this.lblAnaSyfBaslik.BackColor = System.Drawing.Color.Transparent;
             this.lblAnaSyfBaslik.Font = new System.Drawing.Font("Segoe Print", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));

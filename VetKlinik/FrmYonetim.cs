@@ -47,7 +47,7 @@ namespace VetKlinik
                     .ToList();
             }
         }
-        
+
         private void btnKullaniciEkle_Click(object sender, EventArgs e)
         {
             TblKullanicilar yeniKullanici = new TblKullanicilar();
@@ -57,16 +57,18 @@ namespace VetKlinik
             yeniKullanici.Yetki = cmbYetki.Text;
 
             ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
-            VeriYoneticisi db = new VeriYoneticisi();
 
             string gelenMesaj;
             bool basarili = validator.ValidateCreateUser(yeniKullanici, out gelenMesaj);
 
             if (basarili)
             {
-                db.CreateUser(yeniKullanici);
+                using (VeriYoneticisi db = new VeriYoneticisi())
+                {
+                    db.CreateUser(yeniKullanici);
+                }
 
-                MessageBox.Show("Yeni personel sisteme başarıyla tanımlandı!","Başarılı",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Yeni personel sisteme başarıyla tanımlandı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtYeniKullanici.Clear();
                 txtYeniSifre.Clear();
 
@@ -75,7 +77,7 @@ namespace VetKlinik
             }
             else
             {
-                MessageBox.Show(gelenMesaj, "İşlem Başarısız.",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show(gelenMesaj, "İşlem Başarısız.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -83,16 +85,17 @@ namespace VetKlinik
         {
             if (e.RowIndex < 0)
                 return;
+
             seciliKullaniciID = Convert.ToInt32(dgvKullanicilar.Rows[e.RowIndex].Cells["KullaniciID"].Value);
             txtYeniKullanici.Text = dgvKullanicilar.Rows[e.RowIndex].Cells["KullaniciAdi"].Value.ToString();
             txtYeniSifre.Text = dgvKullanicilar.Rows[e.RowIndex].Cells["Sifre"].Value.ToString();
             cmbYetki.Text = dgvKullanicilar.Rows[e.RowIndex].Cells["Yetki"].Value.ToString();
         }
 
-         private void FrmYonetim_FormClosed(object sender, FormClosingEventArgs e)
-            {
-                Application.Exit();
-            }
+        private void FrmYonetim_FormClosed(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
 
         private void btnKullaniciGuncelle_Click(object sender, EventArgs e)
         {
@@ -118,6 +121,7 @@ namespace VetKlinik
                 {
                     db.UpdateUser(kullanici);
                 }
+
                 MessageBox.Show("Kullanıcı başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 txtYeniKullanici.Clear();
@@ -134,45 +138,51 @@ namespace VetKlinik
         }
 
         private void btnKullaniciSil_Click(object sender, EventArgs e)
-{
-    if (seciliKullaniciID == 0)
-    {
-        MessageBox.Show("Lütfen silmek istediğiniz kullanıcıyı tablodan seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        return;
-    }
-
-    DialogResult sonuc = MessageBox.Show("Seçili kullanıcıyı silmek istediğinize emin misiniz?", "Kullanıcı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-    if (sonuc != DialogResult.Yes)
-        return;
-
-    TblKullanicilar kullanici = new TblKullanicilar();
-    kullanici.KullaniciID = seciliKullaniciID;
-
-    ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
-    string gelenMesaj;
-    bool basarili = validator.ValidateDeleteUser(kullanici, out gelenMesaj);
-
-    if (basarili)
-    {
-        using (VeriYoneticisi db = new VeriYoneticisi())
         {
-            db.DeleteUser(kullanici);
+            if (seciliKullaniciID == 0)
+            {
+                MessageBox.Show("Lütfen silmek istediğiniz kullanıcıyı tablodan seçin.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult sonuc = MessageBox.Show("Seçili kullanıcıyı silmek istediğinize emin misiniz?", "Kullanıcı Sil", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (sonuc != DialogResult.Yes)
+                return;
+
+            TblKullanicilar kullanici = new TblKullanicilar();
+            kullanici.KullaniciID = seciliKullaniciID;
+
+            ValidasyonYoneticisi validator = new ValidasyonYoneticisi();
+            string gelenMesaj;
+            bool basarili = validator.ValidateDeleteUser(kullanici, out gelenMesaj);
+
+            if (basarili)
+            {
+                using (VeriYoneticisi db = new VeriYoneticisi())
+                {
+                    if (db.IsLastAdmin(seciliKullaniciID))
+                    {
+                        MessageBox.Show("Sistemde en az bir Admin hesabı bulunmalıdır. Son Admin hesabı silinemez.", "Silme İşlemi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    db.DeleteUser(kullanici);
+                }
+
+                MessageBox.Show("Kullanıcı başarıyla silindi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtYeniKullanici.Clear();
+                txtYeniSifre.Clear();
+                cmbYetki.SelectedIndex = 1;
+                seciliKullaniciID = 0;
+
+                KullaniciListele();
+            }
+            else
+            {
+                MessageBox.Show(gelenMesaj, "İşlem Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
-
-        MessageBox.Show("Kullanıcı başarıyla silindi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        txtYeniKullanici.Clear();
-        txtYeniSifre.Clear();
-        cmbYetki.SelectedIndex = 1;
-        seciliKullaniciID = 0;
-
-        KullaniciListele();
-    }
-    else
-    {
-        MessageBox.Show(gelenMesaj, "İşlem Başarısız", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-    }
-}
     }
 }

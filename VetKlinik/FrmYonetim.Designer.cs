@@ -36,7 +36,7 @@
             this.lblSifre = new System.Windows.Forms.Label();
             this.lblYetki = new System.Windows.Forms.Label();
             this.cmbYetki = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblYonetim = new System.Windows.Forms.Label();
             this.btnKullaniciGuncelle = new System.Windows.Forms.Button();
             this.btnKullaniciSil = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKullanicilar)).BeginInit();
@@ -44,38 +44,38 @@
             // 
             // btnKullaniciEkle
             // 
-            this.btnKullaniciEkle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKullaniciEkle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnKullaniciEkle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.btnKullaniciEkle.Location = new System.Drawing.Point(54, 226);
+            this.btnKullaniciEkle.Location = new System.Drawing.Point(82, 282);
             this.btnKullaniciEkle.Name = "btnKullaniciEkle";
             this.btnKullaniciEkle.Size = new System.Drawing.Size(117, 30);
             this.btnKullaniciEkle.TabIndex = 0;
-            this.btnKullaniciEkle.Text = "EKLE\r\n\r\n";
+            this.btnKullaniciEkle.Text = "Ekle";
             this.btnKullaniciEkle.UseVisualStyleBackColor = true;
             this.btnKullaniciEkle.Click += new System.EventHandler(this.btnKullaniciEkle_Click);
             // 
             // txtYeniKullanici
             // 
-            this.txtYeniKullanici.Location = new System.Drawing.Point(279, 87);
+            this.txtYeniKullanici.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtYeniKullanici.Location = new System.Drawing.Point(306, 138);
             this.txtYeniKullanici.Name = "txtYeniKullanici";
             this.txtYeniKullanici.Size = new System.Drawing.Size(117, 20);
             this.txtYeniKullanici.TabIndex = 1;
             // 
             // txtYeniSifre
             // 
-            this.txtYeniSifre.Location = new System.Drawing.Point(279, 131);
+            this.txtYeniSifre.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtYeniSifre.Location = new System.Drawing.Point(306, 176);
             this.txtYeniSifre.Name = "txtYeniSifre";
             this.txtYeniSifre.Size = new System.Drawing.Size(117, 20);
             this.txtYeniSifre.TabIndex = 2;
             // 
             // dgvKullanicilar
             // 
-            this.dgvKullanicilar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvKullanicilar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvKullanicilar.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dgvKullanicilar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKullanicilar.Location = new System.Drawing.Point(30, 271);
+            this.dgvKullanicilar.Location = new System.Drawing.Point(57, 336);
             this.dgvKullanicilar.Name = "dgvKullanicilar";
             this.dgvKullanicilar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvKullanicilar.Size = new System.Drawing.Size(441, 198);
@@ -84,9 +84,10 @@
             // 
             // lblkullaniciAdi
             // 
+            this.lblkullaniciAdi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblkullaniciAdi.AutoSize = true;
             this.lblkullaniciAdi.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblkullaniciAdi.Location = new System.Drawing.Point(104, 88);
+            this.lblkullaniciAdi.Location = new System.Drawing.Point(131, 139);
             this.lblkullaniciAdi.Name = "lblkullaniciAdi";
             this.lblkullaniciAdi.Size = new System.Drawing.Size(105, 18);
             this.lblkullaniciAdi.TabIndex = 4;
@@ -94,9 +95,10 @@
             // 
             // lblSifre
             // 
+            this.lblSifre.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSifre.AutoSize = true;
             this.lblSifre.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblSifre.Location = new System.Drawing.Point(104, 133);
+            this.lblSifre.Location = new System.Drawing.Point(131, 175);
             this.lblSifre.Name = "lblSifre";
             this.lblSifre.Size = new System.Drawing.Size(46, 18);
             this.lblSifre.TabIndex = 5;
@@ -104,9 +106,10 @@
             // 
             // lblYetki
             // 
+            this.lblYetki.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblYetki.AutoSize = true;
             this.lblYetki.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblYetki.Location = new System.Drawing.Point(104, 175);
+            this.lblYetki.Location = new System.Drawing.Point(131, 212);
             this.lblYetki.Name = "lblYetki";
             this.lblYetki.Size = new System.Drawing.Size(50, 18);
             this.lblYetki.TabIndex = 6;
@@ -114,54 +117,58 @@
             // 
             // cmbYetki
             // 
+            this.cmbYetki.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbYetki.FormattingEnabled = true;
-            this.cmbYetki.Location = new System.Drawing.Point(279, 176);
+            this.cmbYetki.Location = new System.Drawing.Point(306, 213);
             this.cmbYetki.Name = "cmbYetki";
             this.cmbYetki.Size = new System.Drawing.Size(117, 21);
             this.cmbYetki.TabIndex = 7;
             // 
-            // label2
+            // lblYonetim
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Mongolian Baiti", 29F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(86, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(333, 41);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Kullanıcı Yönetim ";
+            this.lblYonetim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblYonetim.AutoSize = true;
+            this.lblYonetim.Font = new System.Drawing.Font("Gabriola", 34F, System.Drawing.FontStyle.Bold);
+            this.lblYonetim.Location = new System.Drawing.Point(83, 29);
+            this.lblYonetim.Name = "lblYonetim";
+            this.lblYonetim.Size = new System.Drawing.Size(380, 85);
+            this.lblYonetim.TabIndex = 9;
+            this.lblYonetim.Text = "KULLANICI YÖNETİM";
+            this.lblYonetim.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnKullaniciGuncelle
             // 
-            this.btnKullaniciGuncelle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKullaniciGuncelle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnKullaniciGuncelle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.btnKullaniciGuncelle.Location = new System.Drawing.Point(187, 226);
+            this.btnKullaniciGuncelle.Location = new System.Drawing.Point(215, 282);
             this.btnKullaniciGuncelle.Name = "btnKullaniciGuncelle";
             this.btnKullaniciGuncelle.Size = new System.Drawing.Size(117, 30);
             this.btnKullaniciGuncelle.TabIndex = 10;
-            this.btnKullaniciGuncelle.Text = "GÜNCELLE";
+            this.btnKullaniciGuncelle.Text = "Güncelle";
             this.btnKullaniciGuncelle.UseVisualStyleBackColor = true;
             this.btnKullaniciGuncelle.Click += new System.EventHandler(this.btnKullaniciGuncelle_Click);
             // 
             // btnKullaniciSil
             // 
-            this.btnKullaniciSil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnKullaniciSil.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnKullaniciSil.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
-            this.btnKullaniciSil.Location = new System.Drawing.Point(319, 226);
+            this.btnKullaniciSil.Location = new System.Drawing.Point(347, 282);
             this.btnKullaniciSil.Name = "btnKullaniciSil";
             this.btnKullaniciSil.Size = new System.Drawing.Size(117, 30);
             this.btnKullaniciSil.TabIndex = 11;
-            this.btnKullaniciSil.Text = "SİL";
+            this.btnKullaniciSil.Text = "Sil";
             this.btnKullaniciSil.UseVisualStyleBackColor = true;
+            this.btnKullaniciSil.Click += new System.EventHandler(this.btnKullaniciSil_Click);
             // 
             // FrmYonetim
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(504, 481);
+            this.ClientSize = new System.Drawing.Size(558, 571);
             this.Controls.Add(this.btnKullaniciSil);
             this.Controls.Add(this.btnKullaniciGuncelle);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblYonetim);
             this.Controls.Add(this.cmbYetki);
             this.Controls.Add(this.lblYetki);
             this.Controls.Add(this.lblSifre);
@@ -196,7 +203,7 @@
      
         private System.Windows.Forms.Label lblYetki;
         private System.Windows.Forms.ComboBox cmbYetki;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblYonetim;
         private System.Windows.Forms.Button btnKullaniciGuncelle;
         private System.Windows.Forms.Button btnKullaniciSil;
     }

@@ -92,6 +92,11 @@ namespace VetKlinik
             }
         }
 
+        public bool DoesOwnerHaveAnimal(int sahipID)
+        {
+            return this.TblHayvanlar.Any(h => h.SahipID == sahipID);
+        }
+
         public TblSahipler GetOwnerById(int ownerId)
         {
             return this.TblSahipler.FirstOrDefault(o => o.SahipID == ownerId); //Shaip id ile sahibin bütün bilgilerini görüntüleyebilirirz
@@ -189,6 +194,10 @@ namespace VetKlinik
                 return db.TblKullanicilar.Any(kullanici => kullanici.KullaniciAdi == kullaniciAdi);
             }
         }
+        public bool IsLastAdmin(int kullaniciID)
+        {
+            return this.TblKullanicilar.Count(k => k.Yetki == "Admin" && k.KullaniciID != kullaniciID) == 0;
+        }
 
         public void CreateUser(TblKullanicilar yeniKullanici)
         {
@@ -204,8 +213,13 @@ namespace VetKlinik
 
         public void DeleteUser(TblKullanicilar kullanici)
         {
-            this.TblKullanicilar.Remove(kullanici);
-            SaveChanges();
+            TblKullanicilar silinecekKullanici = this.TblKullanicilar.FirstOrDefault(k => k.KullaniciID == kullanici.KullaniciID);
+
+            if (silinecekKullanici != null)
+            {
+                this.TblKullanicilar.Remove(silinecekKullanici);
+                SaveChanges();
+            }
         }
     }
 }

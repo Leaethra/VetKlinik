@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblHastaKayitlari = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTelefon = new System.Windows.Forms.TextBox();
@@ -60,8 +60,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.txtTelefon);
             this.panel1.Controls.Add(this.txtEposta);
@@ -127,6 +126,7 @@
             // 
             // lblSahipler
             // 
+            this.lblSahipler.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSahipler.AutoSize = true;
             this.lblSahipler.Font = new System.Drawing.Font("Gabriola", 48F, System.Drawing.FontStyle.Bold);
             this.lblSahipler.Location = new System.Drawing.Point(187, 9);
@@ -138,6 +138,7 @@
             // 
             // btnSahipSil
             // 
+            this.btnSahipSil.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSahipSil.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnSahipSil.Location = new System.Drawing.Point(182, 308);
             this.btnSahipSil.Name = "btnSahipSil";
@@ -149,6 +150,7 @@
             // 
             // btnSahipGuncelle
             // 
+            this.btnSahipGuncelle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSahipGuncelle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnSahipGuncelle.Location = new System.Drawing.Point(331, 308);
             this.btnSahipGuncelle.Name = "btnSahipGuncelle";
@@ -160,6 +162,7 @@
             // 
             // btnSahipEkle
             // 
+            this.btnSahipEkle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSahipEkle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnSahipEkle.Location = new System.Drawing.Point(481, 308);
             this.btnSahipEkle.Name = "btnSahipEkle";
@@ -171,27 +174,25 @@
             // 
             // dgvSahipler
             // 
-            this.dgvSahipler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSahipler.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvSahipler.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSahipler.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSahipler.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSahipler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSahipler.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSahipler.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSahipler.Location = new System.Drawing.Point(33, 366);
             this.dgvSahipler.MultiSelect = false;
             this.dgvSahipler.Name = "dgvSahipler";
@@ -216,7 +217,7 @@
             this.Controls.Add(this.lblHastaKayitlari);
             this.Name = "FrmSahipler";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmSahipler";
+            this.Text = "Sahip Kayıtları";
             this.Load += new System.EventHandler(this.FrmSahipler_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

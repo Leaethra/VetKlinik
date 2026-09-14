@@ -18,8 +18,8 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvHastalar = new System.Windows.Forms.DataGridView();
             this.lblHastaAdi = new System.Windows.Forms.Label();
             this.lblTur = new System.Windows.Forms.Label();
@@ -44,27 +44,25 @@
             // 
             // dgvHastalar
             // 
-            this.dgvHastalar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvHastalar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvHastalar.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHastalar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHastalar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHastalar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHastalar.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHastalar.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHastalar.Location = new System.Drawing.Point(43, 375);
             this.dgvHastalar.MultiSelect = false;
             this.dgvHastalar.Name = "dgvHastalar";
@@ -161,6 +159,7 @@
             // 
             // btnEkle
             // 
+            this.btnEkle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEkle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnEkle.Location = new System.Drawing.Point(491, 334);
             this.btnEkle.Name = "btnEkle";
@@ -172,6 +171,7 @@
             // 
             // btnGuncelle
             // 
+            this.btnGuncelle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnGuncelle.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnGuncelle.Location = new System.Drawing.Point(341, 334);
             this.btnGuncelle.Name = "btnGuncelle";
@@ -183,6 +183,7 @@
             // 
             // btnSil
             // 
+            this.btnSil.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSil.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Bold);
             this.btnSil.Location = new System.Drawing.Point(192, 334);
             this.btnSil.Name = "btnSil";
@@ -194,19 +195,19 @@
             // 
             // lblHastaKayitlari
             // 
+            this.lblHastaKayitlari.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblHastaKayitlari.AutoSize = true;
-            this.lblHastaKayitlari.Font = new System.Drawing.Font("Mongolian Baiti", 33F, System.Drawing.FontStyle.Bold);
-            this.lblHastaKayitlari.Location = new System.Drawing.Point(191, 29);
+            this.lblHastaKayitlari.Font = new System.Drawing.Font("Gabriola", 44F, System.Drawing.FontStyle.Bold);
+            this.lblHastaKayitlari.Location = new System.Drawing.Point(212, -1);
             this.lblHastaKayitlari.Name = "lblHastaKayitlari";
-            this.lblHastaKayitlari.Size = new System.Drawing.Size(434, 46);
+            this.lblHastaKayitlari.Size = new System.Drawing.Size(405, 108);
             this.lblHastaKayitlari.TabIndex = 20;
             this.lblHastaKayitlari.Text = "HASTA KAYITLARI";
             this.lblHastaKayitlari.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.lblSahip);
             this.panel1.Controls.Add(this.cmbSahip);

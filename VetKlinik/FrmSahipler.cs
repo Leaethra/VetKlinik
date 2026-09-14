@@ -40,7 +40,8 @@ namespace VetKlinik
                         s.SahipID,
                         s.AdSoyad,
                         s.Telefon,
-                        s.Eposta
+                        s.Eposta,
+                        s.KayitTarihi
                     })
                     .ToList();
             }
@@ -78,7 +79,7 @@ namespace VetKlinik
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Sahip eklenirken bir hata oluştu.\n\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sahip eklenirken bir hata oluştu.\n\n" + ex.InnerException?.InnerException?.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -124,6 +125,12 @@ namespace VetKlinik
                 if (seciliSahip == null)
                 {
                     MessageBox.Show("Lütfen silmek istediğiniz sahibi listeden seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (veriYoneticisi.DoesOwnerHaveAnimal(seciliSahip.SahipID))
+                {
+                    MessageBox.Show("Bu sahibin kayıtlı hayvanları bulunduğu için sahibi silemezsiniz.", "Silme İşlemi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
