@@ -131,6 +131,11 @@ namespace VetKlinik
             return this.TblMuayeneKayitlari.ToList(); //muayenedeki notlar tarih değiştiğinde
         }
 
+        public TblMuayeneKayitlari GetExaminationById(int kayitID)
+        {
+            return this.TblMuayeneKayitlari.FirstOrDefault(m => m.KayitID == kayitID);
+        }
+
         public void CreateExamination(TblMuayeneKayitlari muayene)
         {
             this.TblMuayeneKayitlari.Add(muayene);//hayvana o gün yapılan muayeneyi işler
@@ -146,6 +151,27 @@ namespace VetKlinik
         public void DeleteExamination(TblMuayeneKayitlari muayene)
         {
             this.TblMuayeneKayitlari.Remove(muayene); //muayene kaydını siler
+            SaveChanges();
+        }
+
+        public List<TblMuayeneIslemleri> GetExaminationOperations()
+        {
+            return this.TblMuayeneIslemleri.ToList();
+        }
+
+        public void CreateExaminationOperation(TblMuayeneIslemleri muayeneIslem)
+        {
+            this.TblMuayeneIslemleri.Add(muayeneIslem);
+            SaveChanges();
+        }
+
+        public void DeleteExaminationOperations(int kayitID)
+        {
+            List<TblMuayeneIslemleri> islemler = this.TblMuayeneIslemleri
+                .Where(x => x.KayitID == kayitID)
+                .ToList();
+
+            this.TblMuayeneIslemleri.RemoveRange(islemler);
             SaveChanges();
         }
 

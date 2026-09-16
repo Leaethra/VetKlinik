@@ -14,14 +14,20 @@ namespace VetKlinik
     
     public partial class TblMuayeneKayitlari
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblMuayeneKayitlari()
+        {
+            this.TblMuayeneIslemleri = new HashSet<TblMuayeneIslemleri>();
+        }
+    
         public int KayitID { get; set; }
         public int HastaID { get; set; }
         public System.DateTime IslemTarihi { get; set; }
-        public int IslemID { get; set; }
         public string TeshisveNotlar { get; set; }
         public decimal Ucret { get; set; }
     
         public virtual TblHayvanlar TblHayvanlar { get; set; }
-        public virtual TblIslemler TblIslemler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblMuayeneIslemleri> TblMuayeneIslemleri { get; set; }
     }
 }

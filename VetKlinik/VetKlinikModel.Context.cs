@@ -28,8 +28,9 @@ namespace VetKlinik
         public virtual DbSet<TblHastaSahipleri> TblHastaSahipleri { get; set; }
         public virtual DbSet<TblHayvanlar> TblHayvanlar { get; set; }
         public virtual DbSet<TblIslemler> TblIslemler { get; set; }
-        public virtual DbSet<TblMuayeneKayitlari> TblMuayeneKayitlari { get; set; }
         public virtual DbSet<TblSahipler> TblSahipler { get; set; }
         public virtual DbSet<TblKullanicilar> TblKullanicilar { get; set; }
+        public virtual DbSet<TblMuayeneIslemleri> TblMuayeneIslemleri { get; set; }
+        public virtual DbSet<TblMuayeneKayitlari> TblMuayeneKayitlari { get; set; }
     }
 }

@@ -15,6 +15,9 @@ namespace VetKlinik
         // FrmHastalar formunu tutacak değişken
         private FrmHastalar frmHastalar;
         private FrmSahipler frmSahipler;
+        private FrmIslemler frmIslemler;
+
+        private FrmMuayeneKayitlari frmMuayeneKayitlari;
         public FrmVetKlinikAnaSyf()
         {
             InitializeComponent();
@@ -53,10 +56,46 @@ namespace VetKlinik
 
         private void btnIslemler_Click(object sender, EventArgs e)
         {
+            bool acForm = frmIslemler == null || frmIslemler.IsDisposed;
+
+            if (acForm)
+            {
+                frmIslemler = new FrmIslemler();
+                frmIslemler.FormClosed += FrmIslemler_FormClosed;
+                frmIslemler.Show();
+            }
+            else
+            {
+                frmIslemler.BringToFront();//zaten açıksa öne getir
+                frmIslemler.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void FrmIslemler_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmSahipler = null;
         }
 
         private void btnMuayeneler_Click(object sender, EventArgs e)
         {
+            bool acForm = frmMuayeneKayitlari == null || frmMuayeneKayitlari.IsDisposed;
+
+            if (acForm)
+            {
+                frmMuayeneKayitlari = new FrmMuayeneKayitlari();
+                frmMuayeneKayitlari.FormClosed += FrmMuayeneKayitlari_FormClosed;
+                frmMuayeneKayitlari.Show();
+            }
+            else
+            {
+                frmMuayeneKayitlari.BringToFront();//zaten açıksa öne getir
+                frmMuayeneKayitlari.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void FrmMuayeneKayitlari_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmSahipler = null;
         }
 
         private void btnSahipler_Click(object sender, EventArgs e)

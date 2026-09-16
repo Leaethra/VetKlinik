@@ -17,7 +17,7 @@ namespace VetKlinik
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TblIslemler()
         {
-            this.TblMuayeneKayitlari = new HashSet<TblMuayeneKayitlari>();
+            this.TblMuayeneIslemleri = new HashSet<TblMuayeneIslemleri>();
         }
     
         public int IslemID { get; set; }
@@ -26,6 +26,6 @@ namespace VetKlinik
         public Nullable<int> StokMiktari { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TblMuayeneKayitlari> TblMuayeneKayitlari { get; set; }
+        public virtual ICollection<TblMuayeneIslemleri> TblMuayeneIslemleri { get; set; }
     }
 }

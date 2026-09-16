@@ -20,21 +20,21 @@ namespace VetKlinik
 
         private void FrmSahipler_Load(object sender, EventArgs e)
         {
-            dgvSahipler.AutoGenerateColumns = true;
+            dgvIslemler.AutoGenerateColumns = true;
             SahipleriListele();
 
-            dgvSahipler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSahipler.MultiSelect = false;
-            dgvSahipler.ReadOnly = true;
-            dgvSahipler.AllowUserToAddRows = false;
-            dgvSahipler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvIslemler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvIslemler.MultiSelect = false;
+            dgvIslemler.ReadOnly = true;
+            dgvIslemler.AllowUserToAddRows = false;
+            dgvIslemler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void SahipleriListele()
         {
             using (VeriYoneticisi db = new VeriYoneticisi())
             {
-                dgvSahipler.DataSource = db.GetOwners()
+                dgvIslemler.DataSource = db.GetOwners()
                     .Select(s => new
                     {
                         s.SahipID,
@@ -46,8 +46,8 @@ namespace VetKlinik
                     .ToList();
             }
 
-            if (dgvSahipler.Columns["SahipID"] != null)
-                dgvSahipler.Columns["SahipID"].Visible = false;
+            if (dgvIslemler.Columns["SahipID"] != null)
+                dgvIslemler.Columns["SahipID"].Visible = false;
         }
 
         private void btnSahipEkle_Click(object sender, EventArgs e)
@@ -167,7 +167,7 @@ namespace VetKlinik
                 if (e.RowIndex < 0)
                     return;
 
-                DataGridViewRow satir = dgvSahipler.Rows[e.RowIndex];
+                DataGridViewRow satir = dgvIslemler.Rows[e.RowIndex];
 
                 if (satir.Cells["SahipID"].Value == null)
                     return;
@@ -198,7 +198,7 @@ namespace VetKlinik
             txtEposta.Clear();
 
             seciliSahip = null;
-            dgvSahipler.ClearSelection();
+            dgvIslemler.ClearSelection();
         }
 
         private void FrmSahipler_FormClosed(object sender, FormClosedEventArgs e)

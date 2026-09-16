@@ -8,15 +8,17 @@
         <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblHastaSahipleri" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblHayvanlar" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblIslemler" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblMuayeneKayitlari" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblSahipler" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblHastaSahipleri_TblHayvanlar" ManuallyRouted="false" />
         <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblHastaSahipleri_TblSahipler" ManuallyRouted="false" />
-        <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblMuayeneKayitlari_TblHayvanlar" ManuallyRouted="false" />
-        <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblMuayeneKayitlari_TblIslemler" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblKullanicilar" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblKullanicilar" Width="1.5" PointX="0.75" PointY="6.375" />
         <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblHayvanlar_TblSahipler" />
-      </Diagram>
+        <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblMuayeneIslemleri" Width="1.5" PointX="7.5" PointY="8.5" />
+        <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblTblMuayeneIslemleri_TblIslemler" />
+        <EntityTypeShape EntityType="DbLogiVetKlinikModel.TblMuayeneKayitlari" Width="1.5" PointX="5.25" PointY="7.5" />
+        <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblMuayeneKayitlari_TblHayvanlar" />
+        <AssociationConnector Association="DbLogiVetKlinikModel.FK_TblTblMuayeneIslemleri_TblMuayeneKayitlari" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -134,11 +134,15 @@ namespace VetKlinik
             bool don = false;
 
             if (islem == null)
-                mesaj = "İşlem veri giriş bilgileri hatalı.";
+                mesaj = "İşlem kayıt bilgileri hatalı.";
             else if (string.IsNullOrWhiteSpace(islem.IslemAdi))
-                mesaj = "Yapılacak işlem adı veya tanımı boş bırakılamaz.";
-            else if (islem.BirimFiyat == null)
-                mesaj = "Yapılacak işlemin birim fiyatı boş bırakılamaz.";
+                mesaj = "İşlem adı boş bırakılamaz.";
+            else if (islem.IslemAdi.Trim().Length > 50)
+                mesaj = "İşlem adı en fazla 50 karakter olabilir.";
+            else if (islem.BirimFiyat < 0)
+                mesaj = "Birim fiyat 0'dan küçük olamaz.";
+            else if (islem.StokMiktari < 0)
+                mesaj = "Stok miktarı 0'dan küçük olamaz.";
             else
                 don = true;
 
@@ -150,12 +154,16 @@ namespace VetKlinik
             mesaj = "";
             bool don = false;
 
-            if (islem == null)
-                mesaj = "Güncellenecek işleme ait bilgiler bulunamadı.";
+            if (islem == null || islem.IslemID == 0)
+                mesaj = "Güncellenecek işleme ait geçerli bir ID bulunamadı.";
             else if (string.IsNullOrWhiteSpace(islem.IslemAdi))
-                mesaj = "İşlem adı alanı boş bırakılarak güncelleme yapılamaz.";
-            else if (islem.BirimFiyat == null)
-                mesaj = "Yapılacak işlemin birim fiyatı boş bırakılarak işlem yapılamaz.";
+                mesaj = "İşlem adı boş bırakılamaz.";
+            else if (islem.IslemAdi.Trim().Length > 50)
+                mesaj = "İşlem adı en fazla 50 karakter olabilir.";
+            else if (islem.BirimFiyat < 0)
+                mesaj = "Birim fiyat 0'dan küçük olamaz.";
+            else if (islem.StokMiktari < 0)
+                mesaj = "Stok miktarı 0'dan küçük olamaz.";
             else
                 don = true;
 
@@ -167,8 +175,8 @@ namespace VetKlinik
             mesaj = "";
             bool don = false;
 
-            if (islem == null)
-                mesaj = "Silinecek işleme ait bilgiler bulunamadı.";
+            if (islem == null || islem.IslemID == 0)
+                mesaj = "Silinecek işleme ait geçerli bir ID bulunamadı.";
             else
                 don = true;
 
@@ -189,15 +197,14 @@ namespace VetKlinik
 
             if (muayene == null)
                 mesaj = "Muayene veri giriş bilgileri hatalı.";
+            else if (string.IsNullOrWhiteSpace(muayene.TeshisveNotlar))
+                mesaj = "Teşhis ve not alanı boş bırakılamaz.";
+            else if (muayene.HastaID == 0)
+                mesaj = "Hasta seçilmeden muayene kaydı yapılamaz.";
+            else if (muayene.Ucret == 0)
+                mesaj = "Ücret alanı boş bırakılamaz.";
             else
-                if (muayene.TeshisveNotlar.Trim() == "")
-                    mesaj = "Teşhis ve not alanı boş bırakılamaz.";
-                else if (muayene.HastaID == 0)
-                    mesaj = "Hasta seçilmeden muayene kaydı yapılamaz.";
-                else if (muayene.Ucret == 0)
-                    mesaj = "Ücret alanı boş bırakılamaz.";
-                else
-                    don = true;
+                don = true;
 
             return don;
         }
@@ -207,8 +214,8 @@ namespace VetKlinik
             mesaj = "";
             bool don = false;
 
-            if (muayene == null)
-                mesaj = "Güncellenecek muayeneye ait bilgiler bulunamadı.";
+            if (muayene == null || muayene.KayitID == 0)
+                mesaj = "Güncellenecek muayeneye ait geçerli bir ID bulunamadı.";
             else if (string.IsNullOrWhiteSpace(muayene.TeshisveNotlar))
                 mesaj = "Teşhis ve not alanları temizlenerek güncelleme yapılamaz.";
             else if (muayene.Ucret == 0)
@@ -224,7 +231,7 @@ namespace VetKlinik
             mesaj = "";
             bool don = false;
 
-            if (muayene == null)
+            if (muayene == null || muayene.KayitID == 0)
                 mesaj = "Silinecek muayeneye ait geçerli bilgiler bulunamadı.";
             else
                 don = true;

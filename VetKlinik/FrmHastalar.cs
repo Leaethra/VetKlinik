@@ -56,6 +56,7 @@ namespace VetKlinik
                     h.CipNo,
                     h.SahipID,
                     Sahibi = h.TblSahipler.AdSoyad
+
                 }).ToList();
 
                 dgvHastalar.DataSource = hayvanlar;

@@ -31,8 +31,8 @@ namespace VetKlinik
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblHastaSahipleri> TblHastaSahipleri { get; set; }
+        public virtual TblSahipler TblSahipler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblMuayeneKayitlari> TblMuayeneKayitlari { get; set; }
-        public virtual TblSahipler TblSahipler { get; set; }
     }
 }
