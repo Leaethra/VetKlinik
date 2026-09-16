@@ -94,7 +94,9 @@ namespace VetKlinik
 
         private void FrmYonetim_FormClosed(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            FrmVetKlinikGiris frmGiris = new FrmVetKlinikGiris();
+            frmGiris.Show();
+            this.Hide();
         }
 
         private void btnKullaniciGuncelle_Click(object sender, EventArgs e)

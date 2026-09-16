@@ -16,8 +16,9 @@ namespace VetKlinik
         private FrmHastalar frmHastalar;
         private FrmSahipler frmSahipler;
         private FrmIslemler frmIslemler;
-
         private FrmMuayeneKayitlari frmMuayeneKayitlari;
+        
+
         public FrmVetKlinikAnaSyf()
         {
             InitializeComponent();
@@ -50,10 +51,6 @@ namespace VetKlinik
             frmHastalar = null;
         }
 
-        private void btnHayvanSahip_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnIslemler_Click(object sender, EventArgs e)
         {
             bool acForm = frmIslemler == null || frmIslemler.IsDisposed;
@@ -73,7 +70,7 @@ namespace VetKlinik
 
         private void FrmIslemler_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmSahipler = null;
+            frmIslemler = null;
         }
 
         private void btnMuayeneler_Click(object sender, EventArgs e)
@@ -95,7 +92,7 @@ namespace VetKlinik
 
         private void FrmMuayeneKayitlari_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frmSahipler = null;
+            frmMuayeneKayitlari = null;
         }
 
         private void btnSahipler_Click(object sender, EventArgs e)
@@ -118,6 +115,13 @@ namespace VetKlinik
         private void FrmSahipler_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmSahipler = null;
+        }
+
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            FrmVetKlinikGiris frmGiris = new FrmVetKlinikGiris();
+            frmGiris.Show();
+            this.Hide();
         }
 
         private void FrmVetKlinikAnaSyf_FormClosed(object sender, FormClosingEventArgs e)

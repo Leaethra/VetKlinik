@@ -15,6 +15,7 @@ namespace VetKlinik
         public FrmVetKlinikGiris()
         {
             InitializeComponent();
+            this.FormClosing += FrmGiris_FormClosed;
         }
 
         private void btnGiris_Click(object sender, EventArgs e)

@@ -30,13 +30,13 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblAnaMenu = new System.Windows.Forms.Label();
-            this.btnHayvanSahip = new System.Windows.Forms.Button();
             this.btnMuayeneler = new System.Windows.Forms.Button();
             this.btnIslemler = new System.Windows.Forms.Button();
             this.btnSahipler = new System.Windows.Forms.Button();
             this.btnHayvanlar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblAnaSyfBaslik = new System.Windows.Forms.Label();
+            this.btnCikis = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,45 +46,32 @@
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.lblAnaMenu);
-            this.panel2.Controls.Add(this.btnHayvanSahip);
             this.panel2.Controls.Add(this.btnMuayeneler);
             this.panel2.Controls.Add(this.btnIslemler);
             this.panel2.Controls.Add(this.btnSahipler);
             this.panel2.Controls.Add(this.btnHayvanlar);
-            this.panel2.Location = new System.Drawing.Point(109, 149);
+            this.panel2.Location = new System.Drawing.Point(109, 139);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(551, 468);
+            this.panel2.Size = new System.Drawing.Size(551, 394);
             this.panel2.TabIndex = 1;
             // 
             // lblAnaMenu
             // 
             this.lblAnaMenu.AutoSize = true;
-            this.lblAnaMenu.Font = new System.Drawing.Font("Sitka Heading", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAnaMenu.Location = new System.Drawing.Point(183, 27);
+            this.lblAnaMenu.Font = new System.Drawing.Font("Sitka Heading", 30F, System.Drawing.FontStyle.Bold);
+            this.lblAnaMenu.Location = new System.Drawing.Point(177, 36);
             this.lblAnaMenu.Name = "lblAnaMenu";
-            this.lblAnaMenu.Size = new System.Drawing.Size(177, 50);
+            this.lblAnaMenu.Size = new System.Drawing.Size(202, 58);
             this.lblAnaMenu.TabIndex = 5;
             this.lblAnaMenu.Text = "Ana Menü";
-            // 
-            // btnHayvanSahip
-            // 
-            this.btnHayvanSahip.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnHayvanSahip.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnHayvanSahip.Location = new System.Drawing.Point(187, 332);
-            this.btnHayvanSahip.Name = "btnHayvanSahip";
-            this.btnHayvanSahip.Size = new System.Drawing.Size(173, 58);
-            this.btnHayvanSahip.TabIndex = 4;
-            this.btnHayvanSahip.Text = "Hayvan-Sahip";
-            this.btnHayvanSahip.UseVisualStyleBackColor = true;
-            this.btnHayvanSahip.Click += new System.EventHandler(this.btnHayvanSahip_Click);
             // 
             // btnMuayeneler
             // 
             this.btnMuayeneler.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnMuayeneler.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnMuayeneler.Location = new System.Drawing.Point(321, 238);
+            this.btnMuayeneler.Location = new System.Drawing.Point(315, 254);
             this.btnMuayeneler.Name = "btnMuayeneler";
-            this.btnMuayeneler.Size = new System.Drawing.Size(173, 56);
+            this.btnMuayeneler.Size = new System.Drawing.Size(179, 61);
             this.btnMuayeneler.TabIndex = 3;
             this.btnMuayeneler.Text = "Muayeneler";
             this.btnMuayeneler.UseVisualStyleBackColor = true;
@@ -94,9 +81,9 @@
             // 
             this.btnIslemler.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnIslemler.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnIslemler.Location = new System.Drawing.Point(321, 134);
+            this.btnIslemler.Location = new System.Drawing.Point(315, 137);
             this.btnIslemler.Name = "btnIslemler";
-            this.btnIslemler.Size = new System.Drawing.Size(173, 58);
+            this.btnIslemler.Size = new System.Drawing.Size(179, 63);
             this.btnIslemler.TabIndex = 2;
             this.btnIslemler.Text = "İşlemler";
             this.btnIslemler.UseVisualStyleBackColor = true;
@@ -106,9 +93,9 @@
             // 
             this.btnSahipler.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSahipler.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnSahipler.Location = new System.Drawing.Point(58, 237);
+            this.btnSahipler.Location = new System.Drawing.Point(52, 253);
             this.btnSahipler.Name = "btnSahipler";
-            this.btnSahipler.Size = new System.Drawing.Size(173, 58);
+            this.btnSahipler.Size = new System.Drawing.Size(179, 63);
             this.btnSahipler.TabIndex = 1;
             this.btnSahipler.Text = "Sahipler";
             this.btnSahipler.UseVisualStyleBackColor = true;
@@ -118,9 +105,9 @@
             // 
             this.btnHayvanlar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnHayvanlar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.btnHayvanlar.Location = new System.Drawing.Point(58, 134);
+            this.btnHayvanlar.Location = new System.Drawing.Point(52, 137);
             this.btnHayvanlar.Name = "btnHayvanlar";
-            this.btnHayvanlar.Size = new System.Drawing.Size(173, 58);
+            this.btnHayvanlar.Size = new System.Drawing.Size(179, 63);
             this.btnHayvanlar.TabIndex = 0;
             this.btnHayvanlar.Text = "Hastalar";
             this.btnHayvanlar.UseVisualStyleBackColor = true;
@@ -151,12 +138,25 @@
             this.lblAnaSyfBaslik.Text = "VetKlinik";
             this.lblAnaSyfBaslik.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnCikis
+            // 
+            this.btnCikis.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCikis.ForeColor = System.Drawing.Color.Crimson;
+            this.btnCikis.Location = new System.Drawing.Point(520, 567);
+            this.btnCikis.Name = "btnCikis";
+            this.btnCikis.Size = new System.Drawing.Size(140, 40);
+            this.btnCikis.TabIndex = 2;
+            this.btnCikis.Text = "Sistemden Çık";
+            this.btnCikis.UseVisualStyleBackColor = true;
+            this.btnCikis.Click += new System.EventHandler(this.btnCikis_Click);
+            // 
             // FrmVetKlinikAnaSyf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(774, 661);
+            this.ClientSize = new System.Drawing.Size(774, 641);
+            this.Controls.Add(this.btnCikis);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FrmVetKlinikAnaSyf";
@@ -178,9 +178,9 @@
         private System.Windows.Forms.Button btnIslemler;
         private System.Windows.Forms.Button btnSahipler;
         private System.Windows.Forms.Button btnHayvanlar;
-        private System.Windows.Forms.Button btnHayvanSahip;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblAnaSyfBaslik;
         private System.Windows.Forms.Label lblAnaMenu;
+        private System.Windows.Forms.Button btnCikis;
     }
 }
