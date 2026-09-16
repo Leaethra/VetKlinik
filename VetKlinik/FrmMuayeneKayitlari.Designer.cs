@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtUcret = new System.Windows.Forms.TextBox();
+            this.lblUcret = new System.Windows.Forms.Label();
+            this.clbIslemler = new System.Windows.Forms.CheckedListBox();
             this.lblIslemler = new System.Windows.Forms.Label();
             this.dtpIslemTarihi = new System.Windows.Forms.DateTimePicker();
             this.cmbHayvan = new System.Windows.Forms.ComboBox();
@@ -43,9 +46,6 @@
             this.btnSahipGuncelle = new System.Windows.Forms.Button();
             this.btnSahipEkle = new System.Windows.Forms.Button();
             this.dgvMuayeneler = new System.Windows.Forms.DataGridView();
-            this.clbIslemler = new System.Windows.Forms.CheckedListBox();
-            this.lblUcret = new System.Windows.Forms.Label();
-            this.txtUcret = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMuayeneler)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +68,33 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(685, 227);
             this.panel1.TabIndex = 38;
+            // 
+            // txtUcret
+            // 
+            this.txtUcret.Location = new System.Drawing.Point(139, 188);
+            this.txtUcret.Name = "txtUcret";
+            this.txtUcret.Size = new System.Drawing.Size(170, 20);
+            this.txtUcret.TabIndex = 21;
+            // 
+            // lblUcret
+            // 
+            this.lblUcret.AutoSize = true;
+            this.lblUcret.Font = new System.Drawing.Font("Sylfaen", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblUcret.Location = new System.Drawing.Point(18, 185);
+            this.lblUcret.Name = "lblUcret";
+            this.lblUcret.Size = new System.Drawing.Size(56, 22);
+            this.lblUcret.TabIndex = 20;
+            this.lblUcret.Text = "Ücret";
+            // 
+            // clbIslemler
+            // 
+            this.clbIslemler.FormattingEnabled = true;
+            this.clbIslemler.Location = new System.Drawing.Point(361, 50);
+            this.clbIslemler.MultiColumn = true;
+            this.clbIslemler.Name = "clbIslemler";
+            this.clbIslemler.Size = new System.Drawing.Size(294, 154);
+            this.clbIslemler.TabIndex = 19;
+            this.clbIslemler.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbIslemler_ItemCheck);
             // 
             // lblIslemler
             // 
@@ -184,23 +211,23 @@
             // 
             this.dgvMuayeneler.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvMuayeneler.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMuayeneler.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMuayeneler.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMuayeneler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMuayeneler.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMuayeneler.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMuayeneler.Location = new System.Drawing.Point(39, 417);
             this.dgvMuayeneler.MultiSelect = false;
             this.dgvMuayeneler.Name = "dgvMuayeneler";
@@ -209,33 +236,6 @@
             this.dgvMuayeneler.Size = new System.Drawing.Size(735, 290);
             this.dgvMuayeneler.TabIndex = 33;
             this.dgvMuayeneler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMuayeneler_CellClick);
-            // 
-            // clbIslemler
-            // 
-            this.clbIslemler.FormattingEnabled = true;
-            this.clbIslemler.Location = new System.Drawing.Point(361, 50);
-            this.clbIslemler.MultiColumn = true;
-            this.clbIslemler.Name = "clbIslemler";
-            this.clbIslemler.Size = new System.Drawing.Size(294, 154);
-            this.clbIslemler.TabIndex = 19;
-            this.clbIslemler.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbIslemler_ItemCheck);
-            // 
-            // lblUcret
-            // 
-            this.lblUcret.AutoSize = true;
-            this.lblUcret.Font = new System.Drawing.Font("Sylfaen", 12.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblUcret.Location = new System.Drawing.Point(18, 185);
-            this.lblUcret.Name = "lblUcret";
-            this.lblUcret.Size = new System.Drawing.Size(56, 22);
-            this.lblUcret.TabIndex = 20;
-            this.lblUcret.Text = "Ücret";
-            // 
-            // txtUcret
-            // 
-            this.txtUcret.Location = new System.Drawing.Point(139, 188);
-            this.txtUcret.Name = "txtUcret";
-            this.txtUcret.Size = new System.Drawing.Size(170, 20);
-            this.txtUcret.TabIndex = 21;
             // 
             // FrmMuayeneKayitlari
             // 
@@ -250,6 +250,7 @@
             this.Controls.Add(this.btnSahipEkle);
             this.Controls.Add(this.dgvMuayeneler);
             this.Name = "FrmMuayeneKayitlari";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Muayene Kayıtları";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMuayeneKayitlari_FormClosed);
             this.Load += new System.EventHandler(this.FrmMuayeneKayitlari_Load);
