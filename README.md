@@ -142,23 +142,35 @@ The application supports standard CRUD operations:
 
 CRUD functionality is implemented for the main entities of the application.
 
-
 ## 🖥️ Application Screens
 
 ### 🔑 Login
 
+![Login Screen](giris.png)
+
 ### 🏠 Main Page
+
+![Main Page](anasfy.png)
 
 ### 🐾 Animal Management
 
+![Animal Management](hasta.png)
+
 ### 👤 Owner Management
+
+![Owner Management](sahip.png)
 
 ### 💊 Operation Management
 
+![Operation Management](islem.png)
+
 ### 🩺 Examination Management
+
+![Examination Management](muayene.png)
 
 ### 👑 Admin Panel
 
+![Admin Panel](yonetim.png)
 
 ## 🚀 Getting Started
 
@@ -195,7 +207,11 @@ This project was developed as an internship project to gain practical experience
 
 ## 👩‍💻 Developer
 
-**Ece 'Leaethra' Yenilmez**
+**Ece Yenilmez**
+
+## 📄 License
+
+This project was developed for educational and internship purposes.
 
 ## 📄 License
 
